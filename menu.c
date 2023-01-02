@@ -9,7 +9,7 @@ Szerzõ:		Marinov Gábor	<<Gaborca>>
 Dátum:		1990.10.24.
 
 Utolsó
-módosítás:	1991.10.05.
+módosítás:	2011.08.11.
 
 ******************************************************************/
 
@@ -122,7 +122,7 @@ char	*CopyRight =
   "   Gaborca   of Gaborca\n"
   "\n"
 "\2Címünk:\n"
-"\1 GURU 1399 Budapest, Pf. 701";
+"\1   http://www.retrotime.hu  ";
 
 reverse( s )
 char s[];
@@ -349,7 +349,7 @@ puts("DrawMenuPage után");
 					break;
 
 			case 5:
-					ShowMessage("GURU v1.31",CopyRight ,FALSE,TRUE, FALSE);
+					ShowMessage("GURU v1.32 Retrotime",CopyRight ,FALSE,TRUE, FALSE);
 					break;
 			case 6:
 			case 7:

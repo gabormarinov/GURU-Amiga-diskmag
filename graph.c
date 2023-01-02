@@ -9,7 +9,7 @@ Szerzõ:		Marinov Gábor	<<Gaborca>>
 Dátum:		1990.07.29.
 
 Utolsó
-módosítás:	1990.10.13.
+módosítás:	2011.08.11.
 
 ******************************************************************/
 
@@ -346,7 +346,7 @@ struct NewScreen topscreen =
 struct NewScreen bottomscreen =
 	{
 	0,
-	264+18,
+	256, /* 264+18 */
 	640,
 	40,
 	3,
@@ -559,9 +559,12 @@ TopBottomLongUp()
 	SetMyPointer( EMPTYPOINTER );
 	Freeze();
 
+	ScreenToFront( TopScreen );
 	for( i=0; i<32 ; i++ )
 		MoveScreen( TopScreen ,0, libben[i] );
-	for( i=17; i<30 ; i++ )
+
+	ScreenToFront( BottomScreen );
+	for( i=20; i<30 ; i++ )
 		MoveScreen( BottomScreen ,0, libben[i] );
 
 	WaitTOF();
@@ -581,8 +584,11 @@ TopBottomLongDown()
 
 	for( i=0; i<32 ; i++ )
 		MoveScreen( TopScreen ,0, -libben[i] );
-	for( i=17; i<30 ; i++ )
+
+	for( i=20; i<30 ; i++ )
 		MoveScreen( BottomScreen ,0, -libben[i] );
+	ScreenToBack( BottomScreen );
+
 
 	WaitTOF();
 	UnFreeze();
@@ -853,7 +859,7 @@ printf("HeaderFont, a OpenScreens után : %lx\n",HeaderFont );
 	NormalFont = (struct TextFont *)OpenDiskFont(&textattr);
 
 #ifdef TEST
-printf("NormalFont, a OpenScreens után : %lx\n" , NormalFont );
+printf("NormalFont, a OpenScreens elott : %lx\n" , NormalFont );
 #endif
 
 	if(NormalFont == NULL){
@@ -863,9 +869,9 @@ printf("NormalFont, a OpenScreens után : %lx\n" , NormalFont );
 	}
 
 	OpenScreens();
-	ScreenToFront( LogoScreen );
-	ScreenToFront( TopScreen  );
-	ScreenToFront( BottomScreen );
+	/* ScreenToFront( LogoScreen ); */
+	/* ScreenToFront( TopScreen  ); */
+	/* ScreenToFront( BottomScreen ); */
 }
 
 OpenScreens()
@@ -915,8 +921,8 @@ OpenScreens()
 
 	SetColor( Color );
 	ScreenToFront( LogoScreen );
-	ScreenToFront( TopScreen );
-	ScreenToFront( BottomScreen );
+	/* ScreenToFront( TopScreen ); */
+	/* ScreenToFront( BottomScreen ); */
 }
 
 /**********************************************************
