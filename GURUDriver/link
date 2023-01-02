@@ -1,0 +1,1 @@
+lc:blink from printertag.o+init.o+data.o+dospecial.o+render.o+transfer.o+density.o to GURUdriver lib lib:amiga.lib+lib:lc.lib NODEBUG SC SD VERBOSE MAP GURUdriver.map H
