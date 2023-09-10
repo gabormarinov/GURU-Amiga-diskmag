@@ -1,51 +1,57 @@
 # GURU Amiga diskmag engine (1990-1991)
-Source code of the Amiga disk magazine engine. I designed and wrote it
-in 1990-1991. I was one of the founders of the magazine,
-under the scene name "Gaborca". Besides coding I was also editor / author,
-mainly in topics of graphics and 3d on Amiga.
-
-Additional code credits:
-- "Poko" Tamás Plósz: music player
-- "Api" Gyula Ujhelyi: IFF picture loader acceleration
+Source code for the Amiga disk magazine engine, which I designed and wrote
+between 1990 and 1991. I was one of the founders of the magazine under
+the scene name "Gaborca." In addition to my role as a designer/coder, I also
+served as an editor and author, primarily focusing on (3d) graphics topics
+on the Amiga.
 
 ![Screenshot](screenshot/GURU_Amiga_diskmag_screenshot_1.jpg)
 
-**GURU** was a popular disk magazine in Hungary, the engine was also adopted
-[in Slovakia](https://www.oldgames.sk/diskmags.php?gallery=1406). We turned
-the diskmag into a "real" paper based magazine in 1992. Later it was renamed
-to **PC Guru** and become one of the most successful computer magazines in Hungary.
-It was published until 2019.
+Additional code credits go to:
 
-If you want to learn more about GURU and the era, I recommend to check:
+- "Poko" Tamás Plósz: Music player
+- "Api" Gyula Ujhelyi: Accelerated IFF picture loader
+
+**GURU** was a popular disk magazine in Hungary, and its engine was also
+adopted [in Slovakia](https://www.oldgames.sk/diskmags.php?gallery=1406).
+In 1992, we transformed the diskmag into a paper-based magazine.
+Later, it was renamed to **PC Guru** and became one of the most successful
+computer magazines in Hungary. PC Guru continued to be published until 2019.
+
+If you'd like to learn more about GURU and the era, I recommend
+checking out the following resources:
+
 - [PC Guru](https://hu.wikipedia.org/wiki/PC_Guru)
 Wikipedia article
 - [Stamps Back](https://youtu.be/YUqn1OPxtmE)
 documentary on Youtube
 
+
 ## About the code
-The `main` branch contains the latest version **v1.31** as I left it in 1991
-(`screenshot`, `sample_diskmag` folders and `README.md` are exceptions of course). 
+The `main` branch contains the latest version, **v1.31**, as I left it in 1991.
+The exception to this includes the `screenshot`, `sample_diskmag` folders, and `README.md`.
 
-It can display separately stored (compressed) articles of several kinds with
-adaptive GUI, pictures, and it can run safe and unsafe programs like demos.
-It also supports hierarchical menu structure and printing of articles.
+This codebase is capable of displaying separately stored (compressed) articles
+of various types with an adaptive graphical user interface (GUI),
+handling images, music and executing both safe and unsafe programs such as demos.
+It also supports a hierarchical menu structure and allows for the printing of articles.
 
-Due to gradual development this version is generally bug free. However, under
-Amiga OS 2+, there is a small bug causing a slight offset of the bottom menu
-screen. I fixed it for the magazine's 20th anniversary in 2011. You can
-find it in the `anniversary` branch. 
+Overall, this version is relatively bug-free due to gradual development.
+However, under Amiga OS 2+, there is a minor bug causing a slight offset in the bottom menu screen.
+I addressed this issue for the magazine's 20th anniversary edition in 2011,
+and you can find the fix in the `anniversary` branch.
 
-`guru.c` is the diskmag engine's main module
+Here's a breakdown of the main code files:
 
-`szerkeszt.c` is the table of contents editor, which produces the toc file.
+- `guru.c`: This file serves as the main module for the disk magazine engine.
+- `szerkeszt.c`: It is responsible for editing the table of contents, producing the TOC file.
+- `GURUDriver folder`: This folder contains a fake printer driver.
+Unfortunately, I don't recall why this component was necessary. :)
 
-`GURUDriver folder` a fake printer driver, I don't really
-remember why this is necessary. :) 
-
-
-Judging the code, please consider that at the time, I just learned the C
-programming language by myself from the excellent
+When evaluating the code, please keep in mind that, at the time, I had taught
+myself the C programming language with the help of the excellent
 [book by Brian Kernighan and Dennis Ritchie](https://en.wikipedia.org/wiki/The_C_Programming_Language). 
+
 
 ## Compiling
 
@@ -55,12 +61,10 @@ make tool, you have to compile and link the code manually.
 ### Diskmag Engine
 
 ```shell
-cc +L guru.c win.c menu.c art.c list.c music.c iff.c graph.c files.c print.c
-ppmodul.c
+cc +L guru.c win.c menu.c art.c list.c music.c iff.c graph.c files.c print.c ppmodul.c
  ```
 ```shell
-ln +c guru.o win.o menu.o art.o list.o music.o iff.o graph.o files.o print.o
-ppmodul.o ppglue.o icons4.o border.o -lc32
+ln +c guru.o win.o menu.o art.o list.o music.o iff.o graph.o files.o print.o ppmodul.o ppglue.o icons4.o border.o -lc32
  ```
 
 ### TOC editor
